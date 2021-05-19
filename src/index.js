@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import Card from "@material-ui/core/Card";
 import SortIcon from "@material-ui/icons/ArrowDownward";
 import movies from "./movies";
-import "./styles.css";
+import "./style.css";
 
 const columns = [
   {
