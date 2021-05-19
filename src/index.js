@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import DataTable from "react-data-table-component";
+import Card from "@material-ui/core/Card";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import movies from "./movies";
+import "./styles.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const columns = [
+  {
+    name: "Title",
+    selector: "title",
+    sortable: true
+  },
+  {
+    name: "Directior",
+    selector: "director",
+    sortable: true
+  },
+  {
+    name: "Runtime (m)",
+    selector: "runtime",
+    sortable: true,
+    right: true
+  }
+];
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App() {
+  return (
+    <div className="App">
+      <Card>
+        <DataTable
+          title="Movies"
+          columns={columns}
+          data={movies}
+          defaultSortFieldId={1}
+          sortIcon={<SortIcon />}
+          pagination
+          selectableRows
+        />
+      </Card>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
